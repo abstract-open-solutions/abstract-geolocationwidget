@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="abstract.geolocationwidget.setGoogleKey"
+               version="20080712-01"
+               handler="abstract.geolocationwidget.setuphandlers.setGoogleKey"
+               title="Abstarct GeoLocation Widget: setup google map key import steps">
+    Various import steps that are not handled by GS import/export
+    handlers.
+  </import-step>
+
+</import-steps>

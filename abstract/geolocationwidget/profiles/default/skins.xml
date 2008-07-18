@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<object name="portal_skins">
+
+ <object name="geolocation_widget"
+    meta_type="Filesystem Directory View"
+    directory="abstract.geolocationwidget:skins/geolocation_templates"/>
+
+ <skin-path name="*">
+  <layer name="geolocation_widget"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>

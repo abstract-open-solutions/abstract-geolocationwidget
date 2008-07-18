@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:tal="http://xml.zope.org/namespaces/tal"
+	xmlns:metal="http://xml.zope.org/namespaces/metal"
+	xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="plone">
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<metal:view_macro define-macro="view"
+                  tal:define="result accessor">
+
+    <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.gmap_key"
+      src=""
+      type="text/javascript">
+    </script>
+
+    <tal:block replace="structure python:here.view_js(result)" />
+    
+    <tal:block tal:condition="result">
+        <div tal:content="python: result.split('|')[1]"></div>
+        <div id="mapView"
+             xmlns:v="urn:schemas-microsoft-com:vml"></div>
+    </tal:block>
+</metal:view_macro>
+
+<metal:define define-macro="edit">
+
+	<metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+		<tal:comment replace="nothing">
+			<!--
+                QUADRA: change definition of widget_value because on error 
+                we have a weird behaviour with , , , , , , 
+              -->
+		</tal:comment>
+        
+		<metal:fill fill-slot="widget_body"
+                    tal:define="widget_multi field/multiValued;
+                                widget_multi_str python:widget_multi and 'true' or 'false';
+                                value python:value!=None and value or '';
+                                widget_id python:fieldName + (widget_multi and '_toadd_widget' or '_widget');
+                                widget_name python:(not widget_multi) and fieldName or nothing;">
+
+            <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.gmap_key"
+                src=""
+                type="text/javascript">
+            </script>
+            <tal:block replace="structure python:here.edit_js()" />
+		
+			<div id="" tal:attributes="id python:fieldName" class="abs-geolocation">
+			    <input
+    				type='text' value='' id='' autocomplete="off"
+    				tal:attributes="name widget_name;
+    				                tabindex tabindex/next;
+                                    id widget_id;
+                                    value value;
+                                    size python:50;" />
+                <a class="clear_button" 
+    				tal:attributes="onclick python:'document.getElementById(\'%s\').value=\'\';;'%(widget_id);
+                                    id python:fieldName + '_clear';"
+                    i18n:attributes="title action_clear_title;"
+                    title="Clear the input field">
+    				<span i18n:translate="action_clear">Clear</span>
+                </a>
+                <a class="test_button" 
+    				onclick="" tal:attributes="onclick python:'showAddress(\'%s\', \'%s\')' % (widget_id, widget_name)"
+                                    
+                    i18n:attributes="title action_test_title;"
+                    title="Test the input field">
+    				<span>Test</span>
+                </a>
+                
+            </div>
+
+		</metal:fill>
+
+	</metal:use>
+
+</metal:define>
+
+<div metal:define-macro="search">
+  <div metal:use-macro="here/widgets/geolocation/macros/edit">
+  </div>
+</div>
+</body>
+
+</html>

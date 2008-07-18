@@ -1,0 +1,51 @@
+/* <dtml-with base_properties> (do not remove this :) */
+
+#mapView{
+    position: relative;
+    width: 490px;
+    height: 250px;
+}
+
+/* .abs-geolocation{
+    width: 52%;
+} */
+
+.abs-geolocation #suggestion .map_suggestion{
+    cursor: pointer; 
+}
+
+.abs-geolocation .test_button {
+    background:transparent url(<dtml-var portal_url>/search_icon.gif) 0 0 no-repeat;
+    cursor: pointer;
+    font-size: &dtml-fontSmallSize;;
+    padding: 1px 1px 1px 15px;
+    text-transform: &dtml-textTransform;;
+    overflow: visible;
+}
+
+.abs-geolocation .clear_button {
+    background: transparent url(<dtml-var portal_url>/undo_icon.gif) 0 0 no-repeat;
+    cursor: pointer;
+    font-size: &dtml-fontSmallSize;;
+    padding: 1px 1px 1px 15px;
+    text-transform: &dtml-textTransform;;
+    overflow: visible;
+}
+
+.abs-geolocation #suggestion {
+    font-size: 90%;
+    margin: 0px;
+    padding: 2px;
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+
+.abs-geolocation .empty_info {
+    padding: 0px 3px;
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+ 
+
+/* </dtml-with> */
