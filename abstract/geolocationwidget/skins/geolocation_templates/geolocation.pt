@@ -19,8 +19,9 @@
 
     <tal:block replace="structure python:here.view_js(result)" />
     
-    <tal:block tal:condition="result">
-        <div tal:content="python: result.split('|')[1]"></div>
+    <tal:block tal:condition="result" tal:define="value python:result.split('|')">
+        <div tal:condition="python: len(value)>1" tal:content="python:value[1]"></div>
+        <div tal:condition="python: len(value)==1" tal:content="string:"></div>
         <div id="mapView"
              xmlns:v="urn:schemas-microsoft-com:vml"></div>
     </tal:block>
@@ -29,14 +30,8 @@
 <metal:define define-macro="edit">
 
 	<metal:use use-macro="field_macro | here/widgets/field/macros/edit">
-		<tal:comment replace="nothing">
-			<!--
-                QUADRA: change definition of widget_value because on error 
-                we have a weird behaviour with , , , , , , 
-              -->
-		</tal:comment>
         
-		<metal:fill fill-slot="widget_body"
+	<metal:fill fill-slot="widget_body"
                     tal:define="widget_multi field/multiValued;
                                 widget_multi_str python:widget_multi and 'true' or 'false';
                                 value python:value!=None and value or '';
