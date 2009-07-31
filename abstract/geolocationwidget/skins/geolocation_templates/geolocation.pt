@@ -12,7 +12,7 @@
 <metal:view_macro define-macro="view"
                   tal:define="result accessor">
 
-    <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.gmap_key"
+    <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.maps()"
       src=""
       type="text/javascript">
     </script>
