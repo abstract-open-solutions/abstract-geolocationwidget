@@ -17,6 +17,8 @@
       type="text/javascript">
     </script>
 
+    <LINK REL=StyleSheet HREF="geolocation_widget.css" TYPE="text/css" MEDIA=screen>
+    
     <tal:block replace="structure python:here.view_js(result)" />
     
     <tal:block tal:condition="result" tal:define="value python:result.split('|')">
