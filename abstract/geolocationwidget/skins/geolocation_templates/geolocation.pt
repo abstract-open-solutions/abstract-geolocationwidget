@@ -22,8 +22,7 @@
     <tal:block replace="structure python:here.view_js(result)" />
     
     <tal:block tal:condition="result" tal:define="value python:result.split('|')">
-        <div tal:condition="python: len(value)>1" tal:content="python:value[1]"></div>
-        <div tal:condition="python: len(value)==1" tal:content="string:"></div>
+        <div class="map-address" tal:condition="python: len(value)>1" tal:content="python:value[1]"></div>
         <div id="mapView"
              xmlns:v="urn:schemas-microsoft-com:vml"></div>
     </tal:block>
