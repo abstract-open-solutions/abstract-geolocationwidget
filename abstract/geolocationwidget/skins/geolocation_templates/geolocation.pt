@@ -39,7 +39,7 @@
                                 widget_id python:fieldName + (widget_multi and '_toadd_widget' or '_widget');
                                 widget_name python:(not widget_multi) and fieldName or nothing;">
 
-            <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.gmap_key"
+            <script tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=%s' % here.maps()"
                 src=""
                 type="text/javascript">
             </script>
