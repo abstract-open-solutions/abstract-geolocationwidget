@@ -43,7 +43,7 @@ return """
 function initialize() {
     if (GBrowserIsCompatible()) {
         var map2 = new GMap2(document.getElementById("mapView"));
-        map2.addControl(new GSmallMapControl());
+        map2.addControl(new GLargeMapControl3D());
         map2.addControl(new GMapTypeControl());
         <!-- map2.addControl(new GOverviewMapControl()); -->
         map2.setCenter(new GLatLng(%(lat)f, %(lng)f), 8, G_HYBRID_MAP);
