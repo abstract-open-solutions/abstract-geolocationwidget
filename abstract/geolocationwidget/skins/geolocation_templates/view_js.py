@@ -15,7 +15,7 @@ y = 0
 sMarker = ""
 if result:
     #map_center = result
-    try:
+    if result.split('|'):
         point_coord = result.split('|')[0];
         coord = point_coord.split(';');
         x = coord[0]
