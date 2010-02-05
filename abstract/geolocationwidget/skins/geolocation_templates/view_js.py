@@ -15,16 +15,14 @@ y = 0
 sMarker = ""
 if result:
     #map_center = result
-    if result.split('|'):
+    if '|' in result:
         point_coord = result.split('|')[0];
-        coord = point_coord.split(';');
-        x = coord[0]
-        y = coord[1]
-        x = float(x)
-        y = float(y)
-    except:
-        x = float(0)
-        y = float(0)
+        if ';' in point_coord:
+            coord = point_coord.split(';');
+            x = coord[0]
+            y = coord[1]
+    x = float(x)
+    y = float(y)
     sMarker = """
 var point = new GLatLng(parseFloat(%f), parseFloat(%f));
 var marker = new GMarker(point);
