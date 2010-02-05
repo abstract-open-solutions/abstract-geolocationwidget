@@ -5,7 +5,7 @@ def setGoogleKey(context):
     # flag to check that we actually meant for this import step to be run.
     # The file is found in profiles/default.
     site = context.getSite()
-    if not site.hasattr('gmap_key'):
+    if not hasattr(site, 'gmap_key'):
         site.manage_addProperty('gmap_key', '', 'string')
     
     if context.readDataFile('abstract.geolocation.txt') is None:
